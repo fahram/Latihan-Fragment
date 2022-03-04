@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 class DetailFragment : Fragment() {
 
-    var nama:String? = null
+    var nama: String? = null
 
     companion object {
         const val EXTRA_NIM = "extra_nim"
@@ -32,6 +33,13 @@ class DetailFragment : Fragment() {
         if (arguments != null) {
             val nim = arguments?.getString(EXTRA_NIM)
             tvNim.text = nim
+        }
+
+        val btnDialog = view.findViewById<Button>(R.id.btn_open_dialog)
+        btnDialog.setOnClickListener {
+            val dialogFragment = PopUpFragment()
+            val fragmentManager = childFragmentManager
+            dialogFragment.show(fragmentManager, PopUpFragment::class.java.simpleName)
         }
     }
 }
