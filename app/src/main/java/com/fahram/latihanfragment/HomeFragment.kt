@@ -25,6 +25,11 @@ class HomeFragment : Fragment() {
         btnMoveToDetailFragment.setOnClickListener {
             val fragmentManager = parentFragmentManager
             val detailFragment = DetailFragment()
+            val bundle = Bundle()
+            bundle.putString(DetailFragment.EXTRA_NIM, "202022112")
+            detailFragment.arguments = bundle
+            detailFragment.nama = "Khaidir Fahram"
+
             fragmentManager.beginTransaction().apply {
                 replace(R.id.container, detailFragment, DetailFragment::class.java.simpleName)
                     .addToBackStack(null)
